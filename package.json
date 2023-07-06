@@ -1,5 +1,6 @@
 {
   "name": "seller-task-project",
+  "homepage": "https://Ambulence.github.io/seller-task-project",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,15 +11,23 @@
     "@types/node": "^16.18.38",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
+    "bulma": "^0.9.4",
     "classnames": "^2.3.2",
+    "gh-pages": "^5.0.0",
+    "localforage": "^1.10.0",
+    "match-sorter": "^6.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.1",
     "react-scripts": "5.0.1",
     "sass": "^1.63.6",
+    "sort-by": "^1.2.0",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

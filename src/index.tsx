@@ -1,6 +1,7 @@
 import React from 'react';
+import 'bulma/css/bulma.css';
 import ReactDOM from 'react-dom/client';
-import './index.scss';
+import { HashRouter } from 'react-router-dom';
 import { App } from './App';
 
 const root = ReactDOM.createRoot(
@@ -8,5 +9,7 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
+  <HashRouter>
     <App />,
+  </HashRouter>,
 );
