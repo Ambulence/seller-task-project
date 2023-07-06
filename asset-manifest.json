@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/seller-task-project/static/css/main.c59cd630.css",
+    "main.js": "/seller-task-project/static/js/main.ce99f77a.js",
+    "index.html": "/seller-task-project/index.html",
+    "main.c59cd630.css.map": "/seller-task-project/static/css/main.c59cd630.css.map",
+    "main.ce99f77a.js.map": "/seller-task-project/static/js/main.ce99f77a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c59cd630.css",
+    "static/js/main.ce99f77a.js"
+  ]
+}
