@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Loader } from '../compoments/Loader/Loader';
+import React from 'react';
+// import { Loader } from '../compoments/Loader/Loader';
 import { Comments } from '../compoments/Comments';
 
 export const CommentsPage: React.FC = () => {
