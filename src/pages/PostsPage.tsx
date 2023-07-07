@@ -1,31 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { PostList } from '../compoments/PostList';
 import { Post } from '../types/Post';
-import { getPosts } from '../api';
 import { Loader } from '../compoments/Loader';
+import { useParams } from 'react-router-dom';
+import useFetch from '../compoments/hooks/useFetch';
 
 export const PostsPage: React.FC = () => {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [loadingPost, setLoadingPost] = useState(false);
-  const [showError, setShowError] = useState(false);
+  const { userId = 0 } = useParams();
 
-  const loadPosts = async() => {
-    try {
-      const postsFromServer = await getPosts();
+  const {
+    data: posts,
+    error: showError,
+    loading: isLoading,
+  } = useFetch<Post[]>('posts', []);
 
-      setPosts(postsFromServer);
-    } catch {
-      setShowError(true);
-    } finally {
-      setLoadingPost(true);
-    }
-  };
-
-  useEffect(() => {
-    loadPosts();
-  }, []);
-
-  // const filteredPosts = posts.filter(post => post.userId === user.id);
+  const filteredPosts = posts.filter(post => post.userId === +userId);
 
   return (
     <div className="section">
@@ -34,11 +23,15 @@ export const PostsPage: React.FC = () => {
           <h1 className="title">Posts</h1>
 
           <div className="block">
-            {loadingPost && !showError ? (
-              <PostList posts={posts} />
-            ) : (
-              <Loader />
-            )}
+            <>
+              {isLoading ? (
+                <Loader />
+              ) : showError ? (
+                <p>Error</p>
+              ) : (
+                <PostList posts={filteredPosts} />
+              )}
+            </>
           </div>
         </div>
       </div>

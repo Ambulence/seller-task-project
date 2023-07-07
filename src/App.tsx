@@ -17,9 +17,9 @@ export const App: React.FC = () => {
         <Route path="users" element={<UserPage />} />
       </Route>
 
-      <Route path="posts" element={<PostsPage />} />
+      <Route path="posts/:userId" element={<PostsPage />} />
       <Route path="albums" element={<AlbumsPage />} />
-      <Route path="comments" element={<CommentsPage />} />
+      <Route path="comments/:postId" element={<CommentsPage />} />
 
       <Route path="*" element={<p>Page not found</p>} />
     </Routes>

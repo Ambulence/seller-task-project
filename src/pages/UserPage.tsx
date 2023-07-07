@@ -1,30 +1,17 @@
-import React, { useState, useEffect, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import { Loader } from '../compoments/Loader/Loader';
 import { UserList } from '../compoments/UserList';
 import { User } from '../types/User';
-import { getUsers } from '../api';
+import useFetch from '../compoments/hooks/useFetch';
 
 export const UserPage: React.FC = () => {
-  const [users, setUsers] = useState<User[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [showError, setShowError] = useState(false);
   const [query, setQuery] = useState('');
 
-  const loadUsers = async() => {
-    try {
-      const usersFromServer = await getUsers();
-
-      setUsers(usersFromServer);
-    } catch (error) {
-      setShowError(true);
-    } finally {
-      setIsLoading(true);
-    }
-  };
-
-  useEffect(() => {
-    loadUsers();
-  }, []);
+  const {
+    data: users,
+    error: showError,
+    loading: isLoading,
+  } = useFetch<User[]>('users', []);
 
   const handleQuery = (e: ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
@@ -54,11 +41,15 @@ export const UserPage: React.FC = () => {
           </div>
 
           <div className="block">
-            {isLoading && !showError ? (
-              <UserList users={visibleUsers} />
-            ) : (
-              <Loader />
-            )}
+            <>
+              {isLoading ? (
+                <Loader />
+              ) : showError ? (
+                <p>Can`t load data</p>
+              ) : (
+                <UserList users={visibleUsers} />
+              )}
+            </>
           </div>
         </div>
       </div>

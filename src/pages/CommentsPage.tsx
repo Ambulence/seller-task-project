@@ -1,32 +1,39 @@
 import React from 'react';
-// import { Loader } from '../compoments/Loader/Loader';
-import { Comments } from '../compoments/Comments';
+import { CommentsList } from '../compoments/CommentsList';
+import useFetch from '../compoments/hooks/useFetch';
+import { useParams } from 'react-router-dom';
+import { Loader } from '../compoments/Loader';
+import { Comments } from '../types/Comment';
 
 export const CommentsPage: React.FC = () => {
-  // const loadComments = async() => {
-  //   try {
-  //     const commentsFromServer = await getUsers();
+  const { postId = 0 } = useParams();
 
-  //     setComment(commentsFromServer);
-  //   } catch (error) {
-  //     setShowError(true);
-  //   } finally {
-  //     setIsLoading(true);
-  //   }
-  // };
+  const {
+    data: comments,
+    error: showError,
+    loading: isLoading,
+  } = useFetch<Comments[]>('comments', []);
 
-  // useEffect(() => {
-  //   loadComments();
-  // }, []);
+  // const filteredComments = comments.filter(
+  //   (comment) => comment.postId === +postId,
+  // );
 
   return (
     <div className="section">
       <div className="container">
         <div className="box">
-          <h1 className="title">Comment</h1>
+          <h1 className="title">Comments</h1>
 
           <div className="block">
-            <Comments />
+            <>
+              {isLoading ? (
+                <Loader />
+              ) : showError ? (
+                <p>Error</p>
+              ) : (
+                <CommentsList comments={comments} />
+              )}
+            </>
           </div>
         </div>
       </div>

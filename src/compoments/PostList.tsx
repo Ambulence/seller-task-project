@@ -13,7 +13,6 @@ export const PostList: React.FC<Props> = ({ posts }) => {
     <table className="table is-narrow is-fullwidth">
       <thead>
         <tr>
-          <th>#</th>
           <th>Title</th>
           <th>Post</th>
           <th></th>
@@ -23,7 +22,6 @@ export const PostList: React.FC<Props> = ({ posts }) => {
       <tbody>
         {posts.map((post) => (
           <tr key={post.id}>
-            <td className="is-vcentered">{post.id}</td>
             <td className="is-vcentered">{post.title}</td>
             <td className="is-vcentered">{post.body}</td>
 

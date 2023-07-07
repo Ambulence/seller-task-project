@@ -15,7 +15,10 @@ export const UserList: React.FC<Props> = ({ users }) => {
         <tr>
           <th>#</th>
           <th>Name</th>
-          <th>Usermane</th>
+          <th>
+            Usernname
+            <button className='button is-small is-rounded '>sort</button>
+          </th>
           <th>Email</th>
           <th> </th>
           <th></th>
@@ -35,7 +38,7 @@ export const UserList: React.FC<Props> = ({ users }) => {
             <td className="is-vcentered">
               <button
                 className="button is-link is-small"
-                onClick={() => navigate('posts')}
+                onClick={() => navigate(`posts/${user.id}`)}
               >
                 Posts
               </button>
