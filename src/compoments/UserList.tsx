@@ -6,7 +6,7 @@ type Props = {
   users: User[];
 };
 
-export const UserLIst: React.FC<Props> = ({ users }) => {
+export const UserList: React.FC<Props> = ({ users }) => {
   const navigate = useNavigate();
 
   return (
@@ -24,11 +24,13 @@ export const UserLIst: React.FC<Props> = ({ users }) => {
 
       <tbody>
         {users.map((user) => (
-          <tr data-cy="todo" key={user.id}>
+          <tr key={user.id}>
             <td className="is-vcentered">{user.id}</td>
             <td className="is-vcentered">{user.name}</td>
             <td className="is-vcentered">{user.username}</td>
-            <td className="is-vcentered">{user.email}</td>
+            <td className="is-vcentered">
+              <a href="mailto:">{user.email}</a>
+            </td>
 
             <td className="is-vcentered">
               <button
