@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from 'react';
 
 const JSON_API = 'https://jsonplaceholder.typicode.com/';
