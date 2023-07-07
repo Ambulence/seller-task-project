@@ -17,7 +17,7 @@ export const UserList: React.FC<Props> = ({ users }) => {
           <th>Name</th>
           <th>
             Usernname
-            <button className='button is-small is-rounded '>sort</button>
+            <button className="button is-small is-rounded ">sort</button>
           </th>
           <th>Email</th>
           <th> </th>

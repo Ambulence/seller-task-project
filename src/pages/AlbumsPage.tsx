@@ -1,7 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { Album } from '../types/Album';
-import { Loader } from '../compoments/Loader';
-import { Albums } from '../compoments/Albums';
+import React from 'react';
 
 export const AlbumsPage: React.FC = () => {
   return (
@@ -10,9 +7,7 @@ export const AlbumsPage: React.FC = () => {
         <div className="box">
           <h1 className="title">Albums</h1>
 
-          <div className="block">
-
-          </div>
+          <div className="block"></div>
         </div>
       </div>
     </div>

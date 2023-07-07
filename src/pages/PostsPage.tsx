@@ -14,7 +14,7 @@ export const PostsPage: React.FC = () => {
     loading: isLoading,
   } = useFetch<Post[]>('posts', []);
 
-  const filteredPosts = posts.filter(post => post.userId === +userId);
+  const filteredPosts = posts.filter((post) => post.userId === +userId);
 
   return (
     <div className="section">
