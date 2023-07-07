@@ -1,12 +1,12 @@
 import React from 'react';
 import { CommentsList } from '../compoments/CommentsList';
 import useFetch from '../compoments/hooks/useFetch';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import { Loader } from '../compoments/Loader';
 import { Comments } from '../types/Comment';
 
 export const CommentsPage: React.FC = () => {
-  const { postId = 0 } = useParams();
+  // const { postId = 0 } = useParams();
 
   const {
     data: comments,
