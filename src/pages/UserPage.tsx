@@ -6,6 +6,8 @@ import useFetch from '../compoments/hooks/useFetch';
 
 export const UserPage: React.FC = () => {
   const [query, setQuery] = useState('');
+  const [sortDirection, setSortDirection] = useState('asc');
+  const [isSorted, setIsSorted] = useState(false);
 
   const {
     data: users,
@@ -17,11 +19,36 @@ export const UserPage: React.FC = () => {
     setQuery(e.target.value);
   };
 
+  const handleSort = () => {
+    setSortDirection(prevDirection => (
+      prevDirection === 'asc' ? 'desc' : 'asc'
+    ));
+
+    setIsSorted(true);
+  };
+
+  const handleReset = () => {
+    setSortDirection('asc');
+    setIsSorted(false);
+  };
+
   const visibleUsers = users.filter((user): boolean => {
     const { username } = user;
 
     return username.toLowerCase().includes(query.toLowerCase().trim());
   });
+
+  let sortedUsers = visibleUsers;
+
+  if (isSorted) {
+    sortedUsers = [...visibleUsers].sort((a, b) => {
+      if (sortDirection === 'asc') {
+        return a.username.localeCompare(b.username);
+      } else {
+        return b.username.localeCompare(a.username);
+      }
+    });
+  }
 
   return (
     <div className="section">
@@ -47,7 +74,11 @@ export const UserPage: React.FC = () => {
               ) : showError ? (
                 <p>Can`t load data</p>
               ) : (
-                <UserList users={visibleUsers} />
+                <UserList
+                  users={sortedUsers}
+                  onSort={handleSort}
+                  onReset={handleReset}
+                />
               )}
             </>
           </div>

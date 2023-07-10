@@ -4,9 +4,11 @@ import { useNavigate } from 'react-router-dom';
 
 type Props = {
   users: User[];
+  onSort: () => void;
+  onReset: () => void;
 };
 
-export const UserList: React.FC<Props> = ({ users }) => {
+export const UserList: React.FC<Props> = ({ users, onSort, onReset }) => {
   const navigate = useNavigate();
 
   return (
@@ -14,10 +16,16 @@ export const UserList: React.FC<Props> = ({ users }) => {
       <thead>
         <tr>
           <th>#</th>
-          <th>Name</th>
+          <th>Name
+            <button className="button is-small is-rounded" onClick={onReset}>
+              reset
+            </button>
+          </th>
           <th>
             Usernname
-            <button className="button is-small is-rounded ">sort</button>
+            <button className="button is-small is-rounded" onClick={onSort}>
+              sort
+            </button>
           </th>
           <th>Email</th>
           <th> </th>
