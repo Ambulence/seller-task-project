@@ -16,7 +16,8 @@ export const UserList: React.FC<Props> = ({ users, onSort, onReset }) => {
       <thead>
         <tr>
           <th>#</th>
-          <th>Name
+          <th>
+            Name
             <button className="button is-small is-rounded" onClick={onReset}>
               reset
             </button>

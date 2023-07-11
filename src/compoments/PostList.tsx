@@ -28,7 +28,7 @@ export const PostList: React.FC<Props> = ({ posts }) => {
             <td className="is-vcentered">
               <button
                 className="button is-link is-small"
-                onClick={() => navigate('comments')}
+                onClick={() => navigate(`comments/${post.id}`)}
               >
                 Comments
               </button>

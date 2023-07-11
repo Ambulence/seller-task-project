@@ -1,22 +1,22 @@
 import React from 'react';
 import { CommentsList } from '../compoments/CommentsList';
 import useFetch from '../compoments/hooks/useFetch';
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Loader } from '../compoments/Loader';
 import { Comments } from '../types/Comment';
 
 export const CommentsPage: React.FC = () => {
-  // const { postId = 0 } = useParams();
+  const { postId = '' } = useParams();
 
   const {
     data: comments,
     error: showError,
     loading: isLoading,
-  } = useFetch<Comments[]>('comments', []);
-
-  // const filteredComments = comments.filter(
-  //   (comment) => comment.postId === +postId,
-  // );
+  } = useFetch<Comments[], string>({
+    url: `comments?postId=${postId}`,
+    initialData: [],
+    deps: [postId],
+  });
 
   return (
     <div className="section">

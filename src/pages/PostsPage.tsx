@@ -6,15 +6,17 @@ import { useParams } from 'react-router-dom';
 import useFetch from '../compoments/hooks/useFetch';
 
 export const PostsPage: React.FC = () => {
-  const { userId = 0 } = useParams();
+  const { userId = '' } = useParams();
 
   const {
     data: posts,
     error: showError,
     loading: isLoading,
-  } = useFetch<Post[]>('posts', []);
-
-  const filteredPosts = posts.filter((post) => post.userId === +userId);
+  } = useFetch<Post[], string>({
+    url: `posts?userId=${userId}`,
+    initialData: [],
+    deps: [userId],
+  });
 
   return (
     <div className="section">
@@ -29,7 +31,7 @@ export const PostsPage: React.FC = () => {
               ) : showError ? (
                 <p>Error</p>
               ) : (
-                <PostList posts={filteredPosts} />
+                <PostList posts={posts} />
               )}
             </>
           </div>

@@ -19,7 +19,7 @@ export const App: React.FC = () => {
 
       <Route path="posts/:userId" element={<PostsPage />} />
       <Route path="albums" element={<AlbumsPage />} />
-      <Route path="comments/:postId" element={<CommentsPage />} />
+      <Route path="posts/:userId/comments/:postId" element={<CommentsPage />} />
 
       <Route path="*" element={<p>Page not found</p>} />
     </Routes>
