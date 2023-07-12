@@ -56,7 +56,7 @@ export const UserList: React.FC<Props> = ({ users, onSort, onReset }) => {
             <td className="is-vcentered">
               <button
                 className="button is-link is-small"
-                onClick={() => navigate('albums')}
+                onClick={() => navigate(`albums/${user.id}`)}
               >
                 Albums
               </button>

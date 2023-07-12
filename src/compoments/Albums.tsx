@@ -13,7 +13,6 @@ export const Albums: React.FC<Props> = ({ albums }) => {
     <table className="table is-narrow is-fullwidth">
       <thead>
         <tr>
-          <th>#</th>
           <th>Title</th>
           <th></th>
         </tr>
@@ -22,13 +21,12 @@ export const Albums: React.FC<Props> = ({ albums }) => {
       <tbody>
         {albums.map((album) => (
           <tr key={album.id}>
-            <td className="is-vcentered">{album.id}</td>
             <td className="is-vcentered">{album.title}</td>
 
             <td className="is-vcentered">
               <button
                 className="button is-link is-small"
-                onClick={() => navigate('comments')}
+                onClick={() => navigate(`photos/${album.id}`)}
               >
                 Photos
               </button>

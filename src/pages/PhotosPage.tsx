@@ -1,28 +1,28 @@
 import React from 'react';
-import { Album } from '../types/Album';
-import { Loader } from '../compoments/Loader';
-import { useParams } from 'react-router-dom';
 import useFetch from '../compoments/hooks/useFetch';
-import { Albums } from '../compoments/Albums';
+import { useParams } from 'react-router-dom';
+import { Loader } from '../compoments/Loader';
+import { Photos } from '../compoments/Photos';
+import { Photo } from '../types/Photo';
 
-export const AlbumsPage: React.FC = () => {
-  const { userId = '' } = useParams();
+export const PhotosPage: React.FC = () => {
+  const { albumId = '' } = useParams();
 
   const {
-    data: albums,
+    data: photos,
     error: showError,
     loading: isLoading,
-  } = useFetch<Album[], string>({
-    url: `albums?userId=${userId}`,
+  } = useFetch<Photo[], string>({
+    url: `photos?albumId=${albumId}`,
     initialData: [],
-    deps: [userId],
+    deps: [albumId],
   });
 
   return (
     <div className="section">
       <div className="container">
         <div className="box">
-          <h1 className="title">Albums</h1>
+          <h1 className="title">Photos</h1>
 
           <div className="block">
             <>
@@ -31,7 +31,7 @@ export const AlbumsPage: React.FC = () => {
               ) : showError ? (
                 <p>Error</p>
               ) : (
-                <Albums albums={albums} />
+                <Photos photos={photos} />
               )}
             </>
           </div>

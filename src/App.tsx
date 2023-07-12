@@ -6,6 +6,7 @@ import { UserPage } from './pages/UserPage';
 import { PostsPage } from './pages/PostsPage';
 import { AlbumsPage } from './pages/AlbumsPage';
 import { CommentsPage } from './pages/CommentsPage';
+import { PhotosPage } from './pages/PhotosPage';
 
 export const App: React.FC = () => {
   return (
@@ -17,9 +18,21 @@ export const App: React.FC = () => {
         <Route path="users" element={<UserPage />} />
       </Route>
 
-      <Route path="posts/:userId" element={<PostsPage />} />
-      <Route path="albums" element={<AlbumsPage />} />
-      <Route path="posts/:userId/comments/:postId" element={<CommentsPage />} />
+      <Route path="posts">
+        <Route path=":userId" element={<PostsPage />} />
+        <Route
+          path=":userId/comments/:postId"
+          element={<CommentsPage />}
+        />
+      </Route>
+
+      <Route path="albums">
+        <Route path=":userId" element={<AlbumsPage />} />
+        <Route
+          path=":userId/photos/:albumId"
+          element={<PhotosPage />}
+        />
+      </Route>
 
       <Route path="*" element={<p>Page not found</p>} />
     </Routes>
